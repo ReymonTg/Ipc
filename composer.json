@@ -1,0 +1,44 @@
+{
+    "name": "reymon/ipc",
+    "description": "Async IPC (inter process communication) server.",
+    "keywords": [
+        "ipc",
+        "bot",
+        "https",
+        "server",
+        "objective",
+        "async"
+    ],
+    "minimum-stability": "beta",
+    "license": "GPL-3.0-only",
+    "authors": [
+        {
+            "name": "mahdi",
+            "email": "mahdi.talaee1379@gmail.com"
+        },
+        {
+            "name": "AmirHossein Jafari",
+            "email": "amirhosseinjafari8228@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Reymon\\Ipc\\": "src/"
+        }
+    },
+    "require": {
+        "php-64bit"       : ">=8.2.17",
+        "amphp/parallel"  : "^2",
+        "amphp/file"      : "^3",
+        "nikic/php-parser": "^5"
+    },
+    "require-dev": {
+        "amphp/php-cs-fixer-config": "^2.0"
+    },
+    "scripts": {
+        "build": [
+            "@cs-fix"
+        ],
+        "cs-fix": "php -d pcre.jit=0 vendor/bin/php-cs-fixer --config=.php-cs-fixer.dist.php fix -v"
+    }
+}
