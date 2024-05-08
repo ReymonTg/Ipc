@@ -50,6 +50,6 @@ config.json
 /changelog
 
 # Project
-test*.php
-server.php
-client.php
+/test*.php
+/client.php
+/server.php
