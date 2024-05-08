@@ -15,7 +15,7 @@
 namespace Reymon\Ipc;
 
 use Throwable;
-use Reymon\Shutdown;
+use Reymon\Shutdown as ShutdownRegister;
 use Amp\Cancellation;
 use Revolt\EventLoop;
 use Psr\Log\NullLogger;
@@ -99,7 +99,7 @@ final class Server
                     $this->logger->emergency("Exception during shutdown in IPC client: $e");
                 }
                 if ($payload instanceof Shutdown) {
-                    Shutdown::removeCallback('restarter');
+                    ShutdownRegister::removeCallback('restarter');
                     $this->close();
                 }
             });
