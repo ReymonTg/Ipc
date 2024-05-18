@@ -29,8 +29,7 @@
     "require": {
         "php-64bit"       : ">=8.2.17",
         "amphp/parallel"  : "^2",
-        "amphp/file"      : "^3",
-        "nikic/php-parser": "^5"
+        "amphp/file"      : "^3"
     },
     "require-dev": {
         "amphp/php-cs-fixer-config": "^2.0"
