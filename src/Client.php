@@ -14,11 +14,11 @@
 
 namespace Reymon\Ipc;
 
-use Closure;
 use Amp\Cancellation;
 use Amp\Socket\Socket;
 use Amp\Socket\SocketAddress;
 use Amp\Socket\SocketConnector;
+use Closure;
 use function Amp\Parallel\Ipc\connect;
 
 final class Client

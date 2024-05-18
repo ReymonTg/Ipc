@@ -14,12 +14,12 @@
 
 namespace Reymon\Ipc;
 
-use Closure;
+use Amp\ByteStream\StreamChannel;
 use Amp\Cancellation;
 use Amp\NullCancellation;
 use Amp\Socket\Socket;
 use Amp\Sync\ChannelException;
-use Amp\ByteStream\StreamChannel;
+use Closure;
 
 final class Connection
 {
@@ -53,7 +53,7 @@ final class Connection
         }
     }
 
-    public function close()
+    public function close(): void
     {
         $this->channel->close();
     }
