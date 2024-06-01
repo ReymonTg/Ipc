@@ -29,7 +29,7 @@ use const Amp\Process\IS_WINDOWS;
 use function Amp\File\deleteFile;
 use function Amp\Socket\listen;
 
-final class Server
+final class IpcServer
 {
     private ?string $toUnlink = null;
     private readonly SocketIpcHub $delegate;
