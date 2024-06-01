@@ -9,7 +9,6 @@
         "objective",
         "async"
     ],
-    "minimum-stability": "beta",
     "license": "GPL-3.0-only",
     "authors": [
         {
@@ -28,8 +27,8 @@
     },
     "require": {
         "php-64bit"       : ">=8.2.17",
-        "amphp/parallel"  : "^2",
-        "amphp/file"      : "^3"
+        "amphp/parallel"  : "^2.0",
+        "amphp/file"      : "^3.0"
     },
     "require-dev": {
         "amphp/php-cs-fixer-config": "^2.0"
@@ -38,6 +37,7 @@
         "build": [
             "@cs-fix"
         ],
-        "cs-fix": "php -d pcre.jit=0 vendor/bin/php-cs-fixer --config=.php-cs-fixer.dist.php fix -v"
+        "cs"    : "php -d pcre.jit=0 vendor/bin/php-cs-fixer fix -v --diff --dry-run",
+        "cs-fix": "php -d pcre.jit=0 vendor/bin/php-cs-fixer fix -v --diff"
     }
 }

@@ -21,7 +21,7 @@ use Amp\Socket\Socket;
 use Amp\Sync\ChannelException;
 use Closure;
 
-final class Connection
+final class IpcConnection
 {
     private StreamChannel $channel;
 

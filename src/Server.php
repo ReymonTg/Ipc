@@ -31,8 +31,6 @@ use function Amp\Socket\listen;
 
 final class Server
 {
-    // /** @var list<Listener> */
-    // private array $listeners = [];
     private ?string $toUnlink = null;
     private readonly SocketIpcHub $delegate;
 
@@ -66,72 +64,11 @@ final class Server
         $this->unlink();
     }
 
-    public function accept(): Connection
+    public function accept(): IpcConnection
     {
         $socket = $this->delegate->accept($this->key, $this->cancellation);
-        return new Connection($socket, $this->cancellation);
+        return new IpcConnection($socket, $this->cancellation);
     }
-
-    // public function run()
-    // {
-    //     while ($socket = $this->delegate->accept($this->key, $this->cancellation)) {
-    //         $connection = new Connection($socket, $this->cancellation);
-    //         EventLoop::queue($this->handleConnections(...), $connection);
-    //     }
-    //     $this->delegate->close();
-    // }
-
-    // private function handleConnections(Connection $connection)
-    // {
-    //     try {
-    //         while ($payload = $connection->receive()) {
-    //             if ($payload instanceof Shutdown) {
-    //                 $this->close();
-    //                 return;
-    //             }
-    //             foreach ($this->listeners as $listener) {
-    //                 EventLoop::queue($listener->listen(...), $payload, $connection, $this);
-    //             }
-    //         }
-    //     } catch (Throwable $e) {
-    //         $this->logger->emergency("Exception in IPC connection: $e");
-    //     } finally {
-    //         EventLoop::queue(function () use ($connection, $payload): void {
-    //             try {
-    //                 $connection->disconnect();
-    //             } catch (Throwable $e) {
-    //                 $this->logger->emergency("Exception during shutdown in IPC client: $e");
-    //             }
-    //             if ($payload instanceof Shutdown) {
-    //                 ShutdownRegister::removeCallback('restarter');
-    //                 $this->close();
-    //             }
-    //         });
-    //     }
-    // }
-
-    // public function addListener(Listener $class): self
-    // {
-    //     if (in_array($class, $this->listeners)) {
-    //         // todo : add exception
-    //     }
-    //     $this->listeners[] = $class;
-    //     return $this;
-    // }
-
-    // public function removeListener(Listener $class): self
-    // {
-    //     if (false !== $index = array_search($class, $this->listeners)) {
-    //         unset($this->listeners[$index]);
-    //         return $this;
-    //     }
-    //     // todo : add exception
-    // }
-
-    // public function getListeneres(): array
-    // {
-    //     return $this->listeners;
-    // }
 
     /**
      * Returns whether this resource has been closed.

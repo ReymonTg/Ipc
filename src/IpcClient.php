@@ -21,15 +21,15 @@ use Amp\Socket\SocketConnector;
 use Closure;
 use function Amp\Parallel\Ipc\connect;
 
-final class Client
+final class IpcClient
 {
-    private Connection $connection;
+    private IpcConnection $connection;
     private Socket $socket;
 
     public function __construct(SocketAddress|string $address, string $key, ?Cancellation $cancellation = null, ?SocketConnector $connector = null)
     {
         $this->socket  = connect($address, $key, $cancellation, $connector);
-        $this->connection = new Connection($this->socket, $cancellation);
+        $this->connection = new IpcConnection($this->socket, $cancellation);
     }
 
     public function send(mixed $data): void
