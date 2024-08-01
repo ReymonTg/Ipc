@@ -1,2 +1,2 @@
 # Ipc
-Async IPC (inter process communication) server.
+Async IPC (inter process communication) server based on amphp.
